@@ -1,0 +1,40 @@
+{
+  "name": "@epoundor/kkiapay-nodejs-sdk",
+  "version": "0.0.1",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "license": "MIT",
+  "description": "A non official Nodejs SDK for Kkiapay",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
+    }
+  },
+  "keywords": [
+    "kkiapay",
+    "sdk",
+    "nodejs",
+    "typescript"
+  ],
+  "scripts": {
+    "test": "vitest run",
+    "build": "tsup --watch",
+    "play": "jiti examples/index.ts",
+    "prepack": "tsup && pnpm test",
+    "release": "bumpp && pnpm publish"
+  },
+  "devDependencies": {
+    "typescript": "~5.8.3"
+  },
+  "dependencies": {
+    "bumpp": "^10.1.1",
+    "jiti": "^2.4.2",
+    "tsup": "^8.5.0",
+    "vitest": "^3.1.4"
+  }
+}
