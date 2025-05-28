@@ -3,7 +3,7 @@ import { DirectLinkService } from "./services/direct-link.service";
 import type { KkiapayConfig } from "./types";
 
 export class Kkiapay {
-  baseUrl: string;
+  private baseUrl: string;
   readonly directLink: DirectLinkService;
 
   constructor(config: KkiapayConfig) {
