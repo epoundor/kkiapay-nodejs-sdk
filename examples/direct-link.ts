@@ -7,7 +7,7 @@ const kkiapay = new Kkiapay({
 });
 
 try {
-  const {payment_link} = await kkiapay.directLink.createLink({
+  const { payment_link } = await kkiapay.directLink.createLink({
     amount: 10000,
     country: "229",
     description: "test",
@@ -15,8 +15,7 @@ try {
     callback_url: "https://google.com",
     target: "SDK-TEST",
   });
-    console.log(payment_link);
-    
+  console.log(payment_link);
 } catch (error) {
   console.log(error);
 }
