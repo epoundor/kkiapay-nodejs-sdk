@@ -2,7 +2,8 @@
   "name": "@epoundor/kkiapay-nodejs-sdk",
   "version": "0.0.2-beta.3",
   "type": "module",
-  "main": "dist/index.js",
+  "main": "dist/index.cjs",
+  "module": "./dist/index.js",
   "types": "dist/index.d.ts",
   "license": "MIT",
   "description": "A non official Nodejs SDK for Kkiapay",
@@ -12,7 +13,7 @@
   "exports": {
     ".": {
       "import": "./dist/index.js",
-      "require": "./dist/index.js"
+      "require": "./dist/index.cjs"
     }
   },
   "keywords": [
