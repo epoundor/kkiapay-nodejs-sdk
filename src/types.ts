@@ -33,3 +33,51 @@ export enum PaymentSource {
 export interface CreatePaymentLinkResponse {
   payment_link: string;
 }
+
+export interface DepositParams {
+  phoneNumber: string;
+  amount: number;
+  reason?: string;
+  country?: string;
+  provider?: MomoProvider;
+  service?: string;
+}
+
+export interface DepositResponse {
+  transactionId: string;
+  status: Lowercase<TransactionStatus>;
+  amount: number;
+  phoneNumber: string;
+  fees: number;
+  [key: string]: unknown;
+}
+
+export type MomoProvider =
+  | "airtel-ne"
+  | "celtiis-bj"
+  | "free-sn"
+  | "moov-benin"
+  | "moov-ci"
+  | "moov-tg"
+  | "mtn-benin"
+  | "mtn-ci"
+  | "orange-ci"
+  | "orange-sn"
+  | "tmoney-tg";
+
+export type WalletProvider =
+  | "wave-ci"
+  | "wave-sn"
+  | "idmoney-benin"
+  | "corismoney-bj";
+
+export type CardProvider = "visa-local" | "visa-non-local";
+
+export type Provider = MomoProvider | WalletProvider | CardProvider;
+
+export enum TransactionStatus {
+  PENDING = "PENDING",
+  FAILED = "FAILED",
+  SUCCESS = "SUCCESS",
+  INIT = "INIT",
+}
