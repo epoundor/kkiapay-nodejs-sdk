@@ -1,6 +1,6 @@
 # kkiapay-nodejs-sdk
 
-SDK Node.js pour l'intégration de [Kkiapay](https://kkiapay.me) : création de liens de paiement, dépôts mobile money, et plus.
+SDK Node.js **non officielle** pour l'intégration de [Kkiapay](https://kkiapay.me) : création de liens de paiement, dépôts mobile money, et plus.
 
 ## Installation
 
