@@ -81,3 +81,51 @@ export enum TransactionStatus {
   SUCCESS = "SUCCESS",
   INIT = "INIT",
 }
+
+export interface VerifyTransactionParams {
+  transactionId: string;
+}
+
+export interface VerifyTransactionFound {
+  performed_at: string;
+  type: string;
+  status: string;
+  source: string;
+  source_common_name: string;
+  amount: number;
+  fees: number;
+  reason: string;
+  failureCode: string;
+  failureMessage: string;
+  state: string | null;
+  partnerId: string;
+  feeSupportedBy: string;
+  income: number;
+  transactionId: string;
+  performedAt: string;
+  client: {
+    fullname: string;
+    phone: string;
+    email: string;
+  };
+  [key: string]: unknown;
+}
+
+export interface VerifyTransactionNotFound {
+  status: "TRANSACTION_NOT_FOUND";
+}
+
+export type VerifyTransactionResponse =
+  | VerifyTransactionFound
+  | VerifyTransactionNotFound;
+
+export interface RefundTransactionParams {
+  transactionId: string;
+}
+
+export interface RefundTransactionResponse {
+  code: string;
+  description: string;
+  transactionId?: string;
+  [key: string]: unknown;
+}

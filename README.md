@@ -57,7 +57,7 @@ console.log(payment_link); // https://pay.kkiapay.me/...
 | `failed_callback` | `string` | — | Webhook appelé en cas d'échec |
 | `phone` | `string` | — | Numéro pour envoi du lien par SMS |
 | `notifyBySms` | `boolean` | — | Envoyer le lien par SMS |
-| `target` | `string` | — | Identifiant interne |
+| `target` | `string` | — | Référence interne |
 
 ---
 
@@ -89,6 +89,46 @@ console.log(result.transactionId);
 
 **Opérateurs supportés (`MomoProvider`) :**
 `mtn-benin`, `mtn-ci`, `moov-benin`, `moov-ci`, `moov-tg`, `orange-ci`, `orange-sn`, `free-sn`, `tmoney-tg`, `celtiis-bj`, `airtel-ne`
+
+---
+
+### Vérification de transaction — `kkiapay.transaction.verify`
+
+Vérifie le statut d'une transaction à partir de sa référence.
+
+```ts
+const status = await kkiapay.transaction.verify({
+  transactionId: "6516521598463777",
+});
+
+console.log(status.status); // "SUCCESS", "FAILED", "REVERTED", "PENDING"...
+```
+
+| Paramètre | Type | Requis | Description |
+|---|---|---|---|
+| `transactionId` | `string` | ✓ | Référence de la transaction à vérifier |
+
+Si la transaction n'existe pas, la réponse est `{ status: "TRANSACTION_NOT_FOUND" }`.
+
+---
+
+### Remboursement de transaction — `kkiapay.transaction.refund`
+
+Rembourse (revert) une transaction à partir de sa référence.
+
+```ts
+const refund = await kkiapay.transaction.refund({
+  transactionId: "6516521598463777",
+});
+
+console.log(refund.code, refund.description);
+```
+
+| Paramètre | Type | Requis | Description |
+|---|---|---|---|
+| `transactionId` | `string` | ✓ | Référence de la transaction à rembourser |
+
+La réponse contient un `code` (ex: `INSUFFICIENT_AMOUNT`, `TRANSACTION_NOT_ELIGIBLE`) et une `description` expliquant le résultat.
 
 ## Environnements
 
