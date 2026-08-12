@@ -72,7 +72,6 @@ const result = await kkiapay.deposit.deposit({
   reason: "Remboursement commande #42",
   country: "BJ",
   provider: "mtn-benin",
-  service: "pushup",
 });
 
 console.log(result.transactionId);
@@ -85,7 +84,7 @@ console.log(result.transactionId);
 | `country` | `string` | ✓ | Code pays ISO (ex: `BJ`, `CI`, `SN`) |
 | `provider` | `MomoProvider` | ✓ | Opérateur mobile money (voir liste ci-dessous) |
 | `reason` | `string` | — | Motif du dépôt |
-| `service` | `string` | — | Type de service (ex: `pushup`) |
+| `service` | `string` | — | Type de services |
 
 **Opérateurs supportés (`MomoProvider`) :**
 `mtn-benin`, `mtn-ci`, `moov-benin`, `moov-ci`, `moov-tg`, `orange-ci`, `orange-sn`, `free-sn`, `tmoney-tg`, `celtiis-bj`, `airtel-ne`
