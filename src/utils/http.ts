@@ -4,8 +4,6 @@ export async function httpRequest<T>(
 ): Promise<T> {
 
   try {
-    console.log(url, options);
-
     const response = await fetch(url, options);
 
     if (!response.ok) {
