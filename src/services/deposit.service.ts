@@ -11,7 +11,7 @@ export class DepositService {
    * @param config - The configuration object containing Kkiapay API keys.
    * @param baseUrl - The base URL for the Kkiapay API.
    */
-  constructor(private config: KkiapayConfig, private baseUrl: string) {}
+  constructor(private config: KkiapayConfig, private baseUrl: string) { }
 
   /**
    * Initiates a mobile money deposit (push payment) via the Kkiapay API.
@@ -28,6 +28,7 @@ export class DepositService {
         headers: {
           "x-api-key": this.config.publickey,
           "x-private-key": this.config.privatekey,
+          "x-secret-key": this.config.secretkey,
           "Content-Type": "application/json",
         },
       }
