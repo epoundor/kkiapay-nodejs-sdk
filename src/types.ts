@@ -52,6 +52,14 @@ export interface DepositResponse {
   [key: string]: unknown;
 }
 
+export interface VerifyPhoneNumberResponse {
+  msisdn: string;
+  provider: MomoProvider;
+  status: string;
+  firstname: string;
+  lastname: string;
+}
+
 export type MomoProvider =
   | "airtel-ne"
   | "celtiis-bj"
