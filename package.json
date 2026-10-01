@@ -36,12 +36,10 @@
     "release": "bumpp && pnpm publish --access public"
   },
   "devDependencies": {
-    "typescript": "~5.8.3"
-  },
-  "dependencies": {
     "bumpp": "^10.1.1",
     "jiti": "^2.4.2",
     "tsup": "^8.5.0",
+    "typescript": "~5.8.3",
     "vitest": "^3.1.4"
   }
 }
