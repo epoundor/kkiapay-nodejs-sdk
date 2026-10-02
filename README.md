@@ -129,6 +129,22 @@ console.log(refund.code, refund.description);
 
 La réponse contient un `code` (ex: `INSUFFICIENT_AMOUNT`, `TRANSACTION_NOT_ELIGIBLE`) et une `description` expliquant le résultat.
 
+## Gestion des erreurs
+
+Toute réponse HTTP hors 2xx lève une `KkiapayError` exposant le `status` HTTP et le `body` de la réponse. Les erreurs réseau sont propagées telles quelles.
+
+```ts
+import { KkiapayError } from "@epoundor/kkiapay-nodejs-sdk";
+
+try {
+  await kkiapay.deposit.deposit({ phoneNumber: "22967298275", amount: 100 });
+} catch (error) {
+  if (error instanceof KkiapayError) {
+    console.error(error.status, error.body);
+  }
+}
+```
+
 ## Environnements
 
 | `sandbox` | URL |

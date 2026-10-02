@@ -1,22 +1,29 @@
+import { KkiapayError } from "../errors";
+
 export async function httpRequest<T>(
   url: string,
   options: RequestInit
 ): Promise<T> {
+  const response = await fetch(url, options);
+  const text = await response.text();
+  const body = parseBody(text);
 
-  try {
-    const response = await fetch(url, options);
-
-    if (!response.ok) {
-      const errorText = await response.text();
-
-      const err = new Error(`HTTP ${response.status}: ${errorText || response.statusText}`);
-
-      throw err;
-    }
-    const data = await response.json();
-    return data as Promise<T>;
-  } catch (error) {
-    console.error("Fetch operational failed:", error.message);
+  if (!response.ok) {
+    throw new KkiapayError(
+      response.status,
+      body,
+      `HTTP ${response.status}: ${text || response.statusText}`
+    );
   }
 
+  return body as T;
+}
+
+function parseBody(text: string): unknown {
+  if (!text) return undefined;
+  try {
+    return JSON.parse(text);
+  } catch {
+    return text;
+  }
 }
